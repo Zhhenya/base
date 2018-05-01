@@ -1,54 +1,64 @@
 package forms;
 
 
+import Service.*;
+import forms.handbooks.Class;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.Locale;
 
 public class MainForm{
 
-  /*  private Statement stmt = null;
+    private ObservableList<Class> listOfClass = FXCollections.observableArrayList();
     @FXML
-    private TableView tableView;
+    private TableView<Class> tableView;
     @FXML
-    private TableColumn discipline;
+    private TableColumn<Class, String> discipline;
     @FXML
-    private TableColumn group;
+    private TableColumn<Class, String> group;
     @FXML
-    private TableColumn teacher;
+    private TableColumn<Class, String> teacher;
     @FXML
-    private TableColumn vid;
-    public MainForm(Statement stmt){
-        this.stmt = stmt;
+    private TableColumn<Class, String> vid;
+
+    @FXML
+    private void initialize(){
+
+        printTable();
+
+        discipline.setCellValueFactory(new PropertyValueFactory<>("Discipline"));
+        group.setCellValueFactory(new PropertyValueFactory<>("Group"));
+        teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
+        vid.setCellValueFactory(new PropertyValueFactory<>("Vid"));
+
+        tableView.setItems(listOfClass);
+
+
     }
 
-    public void printTable(){
+    private void printTable(){
+        Locale.setDefault(Locale.ENGLISH);
         try {
-            ResultSet rs = stmt.executeQuery("SELECT DISCIPLINA.NAME, GROUPPA.NAME, VID.VID, PREPODAVATEL.FIO\n" +
-                    "FROM PREPODAVATEL  JOIN PARA  on PARA.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD\n" +
-                    "  JOIN VID on PARA.VID_PK_VID = VID.PK_VID\n" +
-                    "  JOIN GROUPPA  on PARA.GROUP_PK_GROUP = GROUPPA.PK_GROUP\n" +
-                    "  JOIN DISCIPLINA  on PARA.DISCIPLINA_PK_DISC = DISCIPLINA.PK_DISC;");
-
+            ResultSet rs = Connection.stmt.executeQuery(Request.paraTable);
             while (rs.next()){
-                discipline.setText(rs.getString(1));
-                group.setText(rs.getString(2));
-                teacher.setText(rs.getString(3));
-                vid.setText(rs.getString(4));
+                listOfClass.add(new Class(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
             }
+            rs.close();
+            Connection.closeConnection();
 
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
-*/
+
 
 }
