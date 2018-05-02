@@ -3,15 +3,19 @@ package forms;
 
 import Service.*;
 import forms.handbooks.Class;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.util.Locale;
 
@@ -49,10 +53,10 @@ public class MainForm{
         try {
             ResultSet rs = Connection.stmt.executeQuery(Request.paraTable);
             while (rs.next()){
-                listOfClass.add(new Class(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                listOfClass.add(new Class(rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(3)));
             }
             rs.close();
-            Connection.closeConnection();
+         //   Connection.closeConnection();
 
 
         }catch (Exception e){
@@ -60,5 +64,15 @@ public class MainForm{
         }
     }
 
+    @FXML
+    public void openStudentForm(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("student.fxml"));
+        Stage stage = new Stage();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
+
+
+    }
 }
