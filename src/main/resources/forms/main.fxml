@@ -3,8 +3,6 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +14,7 @@
           <Menu mnemonicParsing="false" text="Справочники">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openStudentForm" text="Список студентов" />
-                  <MenuItem mnemonicParsing="false" text="Список преподаватель/дисциплина" />
+                  <MenuItem mnemonicParsing="false" onAction="#openTeacherForm" text="Список преподавателей" />
                   <MenuItem mnemonicParsing="false" text="Список групп" visible="false" />
                   <MenuItem mnemonicParsing="false" text="Список дисциплин" visible="false" />
             </items>
@@ -33,53 +31,13 @@
             </Menu>
         </menus>
       </MenuBar>
-      <TabPane layoutX="66.0" layoutY="98.0" prefHeight="203.0" prefWidth="243.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
-        <tabs>
-          <Tab text="Пары">
-               <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="343.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tableView" layoutX="-12.0" layoutY="83.0" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                              <TableColumn fx:id="discipline" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Дисциплина" />
-                            <TableColumn fx:id="group" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Группа" />
-                            <TableColumn fx:id="teacher" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Преподаватель" />
-                              <TableColumn fx:id="vid" maxWidth="207.0" minWidth="50.0" prefWidth="207.0" text="Вид" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-          </Tab>
-          <Tab text="Списко студентов">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView fx:id="tableViewStudent" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <columns>
-                              <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
-                              <TableColumn fx:id="group" prefWidth="298.0" text="Группа" />
-                           </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-            <Tab text="Список преподаватель/дисциплина">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <columns>
-                            <TableColumn prefWidth="302.0" text="ФИО" />
-                            <TableColumn prefWidth="299.0" text="Дисциплина" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-        </tabs>
-      </TabPane>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
+        <columns>
+            <TableColumn fx:id="discipline" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Дисциплина" />
+          <TableColumn fx:id="group" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Группа" />
+          <TableColumn fx:id="teacher" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Преподаватель" />
+            <TableColumn fx:id="vid" maxWidth="207.0" minWidth="50.0" prefWidth="207.0" text="Вид" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

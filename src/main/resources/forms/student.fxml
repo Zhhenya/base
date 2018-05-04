@@ -9,7 +9,7 @@
       <TableView fx:id="tableViewStudent" layoutX="71.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
         <columns>
           <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
-          <TableColumn fx:id="group" prefWidth="298.0" text="Группа" />
+     <!--     <TableColumn fx:id="group" prefWidth="298.0" text="Группа" /> -->
         </columns>
       </TableView>
    </children>

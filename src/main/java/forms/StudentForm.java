@@ -28,7 +28,7 @@ public class StudentForm {
         initList();
 
         fio.setCellValueFactory(new PropertyValueFactory<>("FIO"));
-        group.setCellValueFactory(new PropertyValueFactory<>("group"));
+     //   group.setCellValueFactory(new PropertyValueFactory<>("group"));
 
         tableViewStudent.setItems(listOfStudent);
     }
@@ -38,7 +38,8 @@ public class StudentForm {
         try{
             ResultSet rs = Connection.stmt.executeQuery(Request.studentTable);
             while (rs.next()){
-                listOfStudent.add(new Student(rs.getString(1), rs.getString(2)));
+              //  listOfStudent.add(new Student(rs.getString(1), rs.getString(2)));
+                listOfStudent.add(new Student((rs.getString(1))));
             }
             rs.close();
         }catch (Exception e){

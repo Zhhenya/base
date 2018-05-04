@@ -4,9 +4,13 @@ public class Student {
     private String FIO;
     private String group;
 
-    public Student(String FIO, String group){
+  /*  public Student(String FIO, String group){
         this.FIO = FIO;
         this.group  = group;
+    }*/
+
+    public Student(String FIO){
+        this.FIO = FIO;
     }
 
     public Student(){

@@ -9,4 +9,12 @@ public class Request {
     public static String studentTable = "select student.fio, grouppa.name from STUDENT join GROUPPA" +
             "  on STUDENT.GROUP_PK_GROUP = GROUPPA.PK_GROUP";
 
+
+    public static String teacherTable = "select fio from PREPODAVATEL";
+
+    public static String teacherDisciplineTable = "select prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
+            "on ocenka.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD join DISCIPLINA\n" +
+            "on DISCIPLINA.PK_DISC = OCENKA.DISCIPLINA_PK_DISC ";
+    public static String addTeacher = "";
+
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.TeacherForm">
+    <children>
+        <TableView fx:id="tableViewTeacher" layoutX="71.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+            <columns>
+                <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
+             <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
+            </columns>
+        </TableView>
+      <Button mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Button layoutX="338.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDiscipline" prefHeight="32.0" prefWidth="147.0" text="Показать дисциплины" />
+      <TableView fx:id="tableViewTeacherDiscipline" layoutX="81.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+         <columns>
+            <TableColumn fx:id="fioTeacher" prefWidth="301.0" text="ФИО" />
+            <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" />
+         </columns>
+      </TableView>
+      <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#showTeacher" prefHeight="32.0" prefWidth="121.0" text="Преподаватели" />
+      <Button layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="32.0" prefWidth="170.0" text="Добавить преподавателя" />
+      <TextField layoutX="29.0" layoutY="55.0" prefHeight="25.0" prefWidth="319.0" />
+    </children>
+</AnchorPane>
