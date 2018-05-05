@@ -109,4 +109,7 @@ public class MainForm{
     private void facultetTable() throws IOException {
         openStage("facultet.fxml");
     }
+    private void specialnostTable(){
+       // openStage("specialnost.fxml");
+    }
 }
