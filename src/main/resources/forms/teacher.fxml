@@ -5,25 +5,45 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.TeacherForm">
+<AnchorPane prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.TeacherForm">
     <children>
-        <TableView fx:id="tableViewTeacher" layoutX="71.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
-            <columns>
-                <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
-             <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
-            </columns>
-        </TableView>
-      <Button mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="338.0" layoutY="10.0" mnemonicParsing="false" onAction="#showDiscipline" prefHeight="32.0" prefWidth="147.0" text="Показать дисциплины" />
-      <TableView fx:id="tableViewTeacherDiscipline" layoutX="81.0" layoutY="45.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
+      <Pane fx:id="editingPane" layoutX="14.0" layoutY="108.0" prefHeight="119.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button layoutX="20.0" layoutY="8.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="38.0" prefWidth="170.0" text="Добавить преподавателя" />
+            <TextField fx:id="add" layoutX="209.0" layoutY="14.0" prefHeight="25.0" prefWidth="320.0" />
+            <Button layoutX="25.0" layoutY="59.0" mnemonicParsing="false" onAction="#addDiscipline" prefHeight="38.0" prefWidth="163.0" text="Добавить дисциплину" />
+            <TextField layoutX="209.0" layoutY="59.0" prefHeight="25.0" prefWidth="356.0" />
+            <Button layoutX="530.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
+         </children>
+      </Pane>
+      <TableView fx:id="tableViewTeacherDiscipline" layoutX="81.0" layoutY="204.0" prefHeight="296.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <columns>
             <TableColumn fx:id="fioTeacher" prefWidth="301.0" text="ФИО" />
             <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" />
          </columns>
       </TableView>
-      <Button layoutX="210.0" layoutY="10.0" mnemonicParsing="false" onAction="#showTeacher" prefHeight="32.0" prefWidth="121.0" text="Преподаватели" />
-      <Button layoutX="29.0" layoutY="10.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="32.0" prefWidth="170.0" text="Добавить преподавателя" />
-      <TextField layoutX="29.0" layoutY="55.0" prefHeight="25.0" prefWidth="319.0" />
+        <TableView fx:id="tableViewTeacher" layoutY="241.0" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <columns>
+                <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
+             <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
+            </columns>
+        </TableView>
+      <TableView fx:id="found" layoutX="120.0" layoutY="268.0" prefHeight="232.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="foundFio" prefWidth="283.0" text="ФИО" />
+            <TableColumn fx:id="foundDiscipline" prefWidth="316.0" text="Дисциплина" />
+        </columns>
+      </TableView>
+      <Pane fx:id="pane" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TextField fx:id="find" layoutX="194.0" layoutY="57.0" prefHeight="14.0" prefWidth="319.0" />
+            <Button layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#findTeacher" prefHeight="32.0" prefWidth="163.0" text="Найти преподавателя" />
+            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showTeacher" prefHeight="32.0" prefWidth="121.0" text="Преподаватели" />
+            <Button layoutX="146.0" layoutY="9.0" mnemonicParsing="false" onAction="#showDiscipline" prefHeight="32.0" prefWidth="147.0" text="Показать дисциплины" />
+            <Button layoutX="488.0" layoutY="9.0" mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" />
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

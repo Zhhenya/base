@@ -86,37 +86,27 @@ public class MainForm{
         }
     }
 
-  /*  public void openStage(String path) throws IOException {
+    public void openStage(String path) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage stage = new Stage();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-    }*/
+    }
 
     @FXML
     public void openStudentForm(ActionEvent actionEvent) throws IOException {
-      /*  Parent root = FXMLLoader.load(getClass().getResource("student.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
-
-      FunctionsForForms f = new FunctionsForForms();
-      f.openStage("student.fxml");
+      openStage("student.fxml");
 
     }
 
     @FXML
     public void openTeacherForm(ActionEvent actionEvent) throws IOException {
-       /* Parent root = FXMLLoader.load(getClass().getResource("teacher.fxml"));
-        Stage stage = new Stage();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
+       openStage("teacher.fxml");
+    }
 
-
-       FunctionsForForms f = new FunctionsForForms();
-       f.openStage("forms/teacher.fxml");
+    @FXML
+    private void facultetTable() throws IOException {
+        openStage("facultet.fxml");
     }
 }

@@ -12,9 +12,15 @@ public class Request {
 
     public static String teacherTable = "select fio from PREPODAVATEL";
 
-    public static String teacherDisciplineTable = "select prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
+    public static String teacherDisciplineTable = "select distinct prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
             "on ocenka.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD join DISCIPLINA\n" +
             "on DISCIPLINA.PK_DISC = OCENKA.DISCIPLINA_PK_DISC ";
     public static String addTeacher = "";
+
+    public static String findTeacher = "select distinct prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
+            "on ocenka.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD join DISCIPLINA\n" +
+            "on DISCIPLINA.PK_DISC = OCENKA.DISCIPLINA_PK_DISC and PREPODAVATEL.FIO = ";
+
+    public static String findTeacherWithoutDiscipline = "select distinct fio from PREPODAVATEL where PREPODAVATEL.FIO = ";
 
 }

@@ -7,21 +7,22 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="402.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.MainForm">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.MainForm">
    <children>
       <MenuBar prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Справочники">
+          <Menu mnemonicParsing="false" text="Списки">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#openStudentForm" text="Список студентов" />
                   <MenuItem mnemonicParsing="false" onAction="#openTeacherForm" text="Список преподавателей" />
                   <MenuItem mnemonicParsing="false" text="Список групп" visible="false" />
-                  <MenuItem mnemonicParsing="false" text="Список дисциплин" visible="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#marksTable" text="Журнал успеваемости" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Справочники">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#facultetTable" text="Справочник факультет" />
+                  <MenuItem mnemonicParsing="false" onAction="#specialnostTable" text="Справочник специальностей" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Unspecified Menu">
@@ -33,10 +34,10 @@
       </MenuBar>
       <TableView fx:id="tableView" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
         <columns>
-            <TableColumn fx:id="discipline" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Дисциплина" />
-          <TableColumn fx:id="group" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Группа" />
-          <TableColumn fx:id="teacher" maxWidth="200.0" minWidth="50.0" prefWidth="200.0" text="Преподаватель" />
-            <TableColumn fx:id="vid" maxWidth="207.0" minWidth="50.0" prefWidth="207.0" text="Вид" />
+            <TableColumn fx:id="discipline" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Дисциплина" />
+          <TableColumn fx:id="group" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Группа" />
+          <TableColumn fx:id="teacher" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Преподаватель" />
+            <TableColumn fx:id="vid" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Вид" />
         </columns>
       </TableView>
    </children>
