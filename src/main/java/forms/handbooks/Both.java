@@ -6,8 +6,7 @@ public class Both {
     public Both(String field){
         this.field = field;
     }
-    public Both(){
-    }
+    public Both(){}
 
     public String getField() {
         return field;

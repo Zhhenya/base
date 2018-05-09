@@ -18,8 +18,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         Service.Connection.getConnection();
-      //  MainForm mainForm = new MainForm();
-     //   mainForm.printTable();
         launch(args);
     }
 }

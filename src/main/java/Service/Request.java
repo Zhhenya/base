@@ -15,12 +15,21 @@ public class Request {
     public static String teacherDisciplineTable = "select distinct prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
             "on ocenka.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD join DISCIPLINA\n" +
             "on DISCIPLINA.PK_DISC = OCENKA.DISCIPLINA_PK_DISC ";
-    public static String addTeacher = "";
+    public static String disciplineTable = "select name from DISCIPLINA";
 
     public static String findTeacher = "select distinct prepodavatel.fio, DISCIPLINA.name from ocenka join PREPODAVATEL\n" +
             "on ocenka.PREPODAVATEL_PK_PREPOD = PREPODAVATEL.PK_PREPOD join DISCIPLINA\n" +
             "on DISCIPLINA.PK_DISC = OCENKA.DISCIPLINA_PK_DISC and PREPODAVATEL.FIO = ";
 
     public static String findTeacherWithoutDiscipline = "select distinct fio from PREPODAVATEL where PREPODAVATEL.FIO = ";
+
+    public static String specTable = "select name from specialnost";
+    public static String facultetTable = "select name from facultet";
+    public static String markTable = "select STUDENT.FIO, DISCIPLINA.NAME, OCENKA.FORMASDACH, OCENKA.MARK, PREPODAVATEL.FIO from OCENKA\n" +
+            "join student on OCENKA.STUDENT_PK_STUDENT = STUDENT.PK_STUDENT\n" +
+            "join DISCIPLINA on OCENKA.DISCIPLINA_PK_DISC = DISCIPLINA.PK_DISC\n" +
+            "join PREPODAVATEL on PREPODAVATEL.PK_PREPOD = OCENKA.PREPODAVATEL_PK_PREPOD";
+
+
 
 }

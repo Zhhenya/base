@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.MarkForm">
+   <children>
+      <TableView fx:id="tableView" layoutX="292.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="student" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Студент" />
+          <TableColumn fx:id="discipline" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Дисциплина" />
+            <TableColumn fx:id="vid" maxWidth="250.0" minWidth="248.0" prefWidth="250.0" text="Форма сдачи" />
+            <TableColumn fx:id="mark" maxWidth="250.0" minWidth="248.0" prefWidth="250.0" text="Оценка" />
+            <TableColumn fx:id="teacher" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Преподаватель" />
+        </columns>
+      </TableView>
+      <Button mnemonicParsing="false" text="Редактировать" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+   </children>
+</AnchorPane>

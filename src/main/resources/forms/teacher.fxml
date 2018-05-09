@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,28 +16,10 @@
             <Button layoutX="20.0" layoutY="8.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="38.0" prefWidth="170.0" text="Добавить преподавателя" />
             <TextField fx:id="add" layoutX="209.0" layoutY="14.0" prefHeight="25.0" prefWidth="320.0" />
             <Button layoutX="25.0" layoutY="59.0" mnemonicParsing="false" onAction="#addDiscipline" prefHeight="38.0" prefWidth="163.0" text="Добавить дисциплину" />
-            <TextField layoutX="209.0" layoutY="59.0" prefHeight="25.0" prefWidth="356.0" />
+            <TextField fx:id="addDisc" layoutX="209.0" layoutY="59.0" prefHeight="25.0" prefWidth="356.0" />
             <Button layoutX="530.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
          </children>
       </Pane>
-      <TableView fx:id="tableViewTeacherDiscipline" layoutX="81.0" layoutY="204.0" prefHeight="296.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-         <columns>
-            <TableColumn fx:id="fioTeacher" prefWidth="301.0" text="ФИО" />
-            <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" />
-         </columns>
-      </TableView>
-        <TableView fx:id="tableViewTeacher" layoutY="241.0" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-            <columns>
-                <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
-             <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
-            </columns>
-        </TableView>
-      <TableView fx:id="found" layoutX="120.0" layoutY="268.0" prefHeight="232.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
-        <columns>
-          <TableColumn fx:id="foundFio" prefWidth="283.0" text="ФИО" />
-            <TableColumn fx:id="foundDiscipline" prefWidth="316.0" text="Дисциплина" />
-        </columns>
-      </TableView>
       <Pane fx:id="pane" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TextField fx:id="find" layoutX="194.0" layoutY="57.0" prefHeight="14.0" prefWidth="319.0" />
@@ -45,5 +29,53 @@
             <Button layoutX="488.0" layoutY="9.0" mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" />
          </children>
       </Pane>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <tabs>
+          <Tab text="Преподаватели">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                          <TableView fx:id="tableViewTeacher" editable="true" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <columns>
+                                  <TableColumn fx:id="fio" prefWidth="599.0" text="ФИО" />
+                               <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
+                              </columns>
+                          </TableView>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tabDiscipline" text="Дисциплины">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="found" editable="true" prefHeight="232.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                              <TableColumn fx:id="foundDiscipline" prefWidth="316.0" text="Найденное" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="tableViewDiscipline" editable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columns>
+                            <TableColumn fx:id="disc" prefWidth="599.0" text="Дисциплина" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Преподаватель/Дисциплина">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableViewTeacherDiscipline" prefHeight="296.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <columns>
+                              <TableColumn fx:id="fioTeacher" prefWidth="301.0" text="ФИО" />
+                              <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
     </children>
 </AnchorPane>

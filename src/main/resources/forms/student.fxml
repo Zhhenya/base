@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.StudentForm">
    <children>
-      <TableView fx:id="tableViewStudent" layoutX="71.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="tableViewStudent" prefHeight="0.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
         <columns>
-          <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
-     <!--     <TableColumn fx:id="group" prefWidth="298.0" text="Группа" /> -->
+          <TableColumn fx:id="fio"  prefWidth="301.0" text="ФИО" />
         </columns>
       </TableView>
+      <Button mnemonicParsing="false" onAction="#addInfo" text="Добавить студента" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <TextField fx:id="addStudent" prefHeight="25.0" prefWidth="542.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+       <Button mnemonicParsing="false" text="Найти" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="40.0" />
+       <TextField AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0" />
    </children>
 </AnchorPane>
