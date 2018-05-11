@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 
 public class TeacherForm {
@@ -64,6 +65,12 @@ public class TeacherForm {
     private TableView tableViewDiscipline;
     @FXML
     private TableColumn<Both, String> disc;
+    @FXML
+    private TableColumn<Teacher, String> indexTeacher;
+    @FXML
+    private TableColumn<Both, String> indexDiscipline;
+    @FXML
+    private TabPane tabPane;
 
 
     @FXML
@@ -74,6 +81,7 @@ public class TeacherForm {
 
         initList();
         fio.setCellValueFactory(new PropertyValueFactory<>("fio"));
+        indexTeacher.setCellValueFactory(new PropertyValueFactory<>("index"));
         tableViewTeacher.setItems(listOfTeacher);
 
      /*   tableViewTeacher.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -106,6 +114,7 @@ public class TeacherForm {
 
         initDisc();
         disc.setCellValueFactory(new PropertyValueFactory<>("field"));
+        indexDiscipline.setCellValueFactory(new PropertyValueFactory<>("index"));
         tableViewDiscipline.setItems(listOfDisc);
 
         disc.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -139,7 +148,7 @@ public class TeacherForm {
         try {
             ResultSet rs = Connection.stmt.executeQuery(Request.disciplineTable);
             while (rs.next()){
-                listOfDisc.add(new Both(rs.getString(1)));
+                listOfDisc.add(new Both(rs.getString(1), rs.getInt(2)));
             }
             rs.close();
         }catch (Exception e){
@@ -162,7 +171,7 @@ public class TeacherForm {
         try{
             ResultSet rs = Connection.stmt.executeQuery(Request.teacherTable);
             while (rs.next()){
-                listOfTeacher.add(new Teacher(rs.getString(1)));
+                listOfTeacher.add(new Teacher(rs.getString(1), rs.getInt(2)));
             }
 
             rs.close();
@@ -286,4 +295,43 @@ public class TeacherForm {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void delete() {
+
+        int indexTabPane = tabPane.getSelectionModel().getSelectedIndex();
+        if (indexTabPane == 0) {
+            int row = tableViewTeacher.getSelectionModel().getSelectedIndex();
+            Teacher b = (Teacher) tableViewTeacher.getSelectionModel().getSelectedItem();
+            ResultSet rs = null;
+            try {
+                rs = Connection.stmt.executeQuery("delete from PREPODAVATEL where PREPODAVATEL.PK_PREPOD = "+ b.getIndex() );
+                rs.next();
+                rs.close();
+                tableViewTeacher.getItems().remove(row);
+            } catch (SQLException e) {
+                FunctionsForForms.errorWindow("Эта запись используется");
+                e.printStackTrace();
+            }
+            return;
+        }
+        if (indexTabPane == 1) {
+            int row = tableViewDiscipline.getSelectionModel().getSelectedIndex();
+            Both b = (Both) tableViewDiscipline.getSelectionModel().getSelectedItem();
+
+            ResultSet rs = null;
+            try {
+                rs = Connection.stmt.executeQuery("delete from DISCIPLINA where DISCIPLINA.PK_DISC = "+ b.getIndex() );
+                rs.next();
+                rs.close();
+                tableViewDiscipline.getItems().remove(row);
+            } catch (SQLException e) {
+                FunctionsForForms.errorWindow("Эта запись используется");
+                e.printStackTrace();
+            }
+            return;
+        }
+
+    }
+
 }

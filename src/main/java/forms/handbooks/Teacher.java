@@ -6,6 +6,7 @@ public class Teacher {
 
     private String fio;
     private String discipline;
+    private int index;
 
     public Teacher(String fio){
         this.fio = fio;
@@ -16,6 +17,10 @@ public class Teacher {
         this.discipline = discipline;
     }
 
+    public Teacher(String fio, int index){
+        this.fio = fio;
+        this.index = index;
+    }
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
@@ -34,5 +39,13 @@ public class Teacher {
 
     public void setFio(String fio) {
         this.fio = fio;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

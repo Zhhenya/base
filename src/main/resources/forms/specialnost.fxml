@@ -8,12 +8,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.Specialnost">
    <children>
-      <TableView fx:id="tableView" layoutX="36.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <TableView fx:id="tableView" layoutX="36.0" layoutY="121.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
+            <TableColumn fx:id="index" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="name" maxWidth="400.0" minWidth="100.0" prefWidth="400.0" text="Специальность" />
         </columns>
       </TableView>
       <Button layoutY="2.0" mnemonicParsing="false" onAction="#addSpecialnost" text="Добавить" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
       <TextField fx:id="addSpecialnost" layoutX="77.0" layoutY="2.0" prefHeight="10.0" prefWidth="317.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <Button layoutX="14.0" layoutY="67.0" mnemonicParsing="false" onAction="#delete" text="Удалить" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="67.0" />
    </children>
 </AnchorPane>

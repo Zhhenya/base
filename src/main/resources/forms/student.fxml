@@ -8,9 +8,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.StudentForm">
    <children>
-      <TableView fx:id="tableViewStudent" prefHeight="0.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="70.0">
+      <Button mnemonicParsing="false" onAction="#delete" text="Удалить" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="70.0" />
+      <TableView fx:id="tableViewStudent" prefHeight="0.0" prefWidth="579.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
-          <TableColumn fx:id="fio"  prefWidth="301.0" text="ФИО" />
+            <TableColumn fx:id="index" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="fio" prefWidth="301.0" text="ФИО" />
         </columns>
       </TableView>
       <Button mnemonicParsing="false" onAction="#addInfo" text="Добавить студента" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />

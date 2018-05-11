@@ -3,6 +3,7 @@ package forms.handbooks;
 public class Student {
     private String FIO;
     private String group;
+    private int index;
 
   /*  public Student(String FIO, String group){
         this.FIO = FIO;
@@ -11,6 +12,10 @@ public class Student {
 
     public Student(String FIO){
         this.FIO = FIO;
+    }
+    public Student(String FIO, int index){
+        this.FIO = FIO;
+        this.index = index;
     }
 
     public Student(){
@@ -30,5 +35,13 @@ public class Student {
 
     public void setFIO(String FIO) {
         this.FIO = FIO;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

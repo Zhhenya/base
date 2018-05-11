@@ -2,6 +2,7 @@ package forms;
 
 
 import Service.*;
+import forms.handbooks.Both;
 import forms.handbooks.Class;
 import forms.handbooks.Teacher;
 import javafx.collections.FXCollections;
@@ -12,14 +13,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 
 public class MainForm{
@@ -35,24 +39,19 @@ public class MainForm{
     private TableColumn<Class, String> teacher;
     @FXML
     private TableColumn<Class, String> vid;
-   /* @FXML
-    private TabPane tabPane;
+
     @FXML
-    private Tab studentGroup;
+    private TableColumn<Class, String> id;
+
+
     @FXML
-    private TableView tableViewStudent;
+    private TextField addDiscipline;
     @FXML
-    private TableColumn<Student, String> groupStudent;
+    private TextField addGroup;
     @FXML
-    private TableColumn<Student, String> fioStudent;
+    private TextField addTeacher;
     @FXML
-    private Tab teacherDiscipline;
-    @FXML
-    private TableView tableViewTeacher;
-    @FXML
-    private TableColumn<Teacher, String> fioTeacher;
-    @FXML
-    private TableColumn<Teacher, String> disciplineTeacher;*/
+    private TextField addVid;
 
     @FXML
     private void initialize(){
@@ -60,6 +59,7 @@ public class MainForm{
         printTable();
 
 
+        id.setCellValueFactory(new PropertyValueFactory<>("index"));
         discipline.setCellValueFactory(new PropertyValueFactory<>("Discipline"));
         group.setCellValueFactory(new PropertyValueFactory<>("Group"));
         teacher.setCellValueFactory(new PropertyValueFactory<>("Teacher"));
@@ -104,7 +104,7 @@ public class MainForm{
         try {
             ResultSet rs = Connection.stmt.executeQuery(Request.paraTable);
             while (rs.next()){
-                listOfClass.add(new Class(rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(3)));
+                listOfClass.add(new Class(rs.getString(1), rs.getString(2), rs.getString(4), rs.getString(3), rs.getInt(5)));
             }
             rs.close();
          //   Connection.closeConnection();
@@ -152,4 +152,79 @@ public class MainForm{
         openStage("discipline.fxml");
     }
 
+   /* private void errorWindow(String error ){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Ошибка");
+        alert.setHeaderText(null);
+        alert.setContentText(error);
+        alert.showAndWait();
+    }*/
+
+    @FXML
+    private void addPara(ActionEvent actionEvent) {
+        Locale.setDefault(Locale.ENGLISH);
+        int idDiscipline = 0, idTeacher = 0, idGroup = 0, idVid = 0;
+        try{
+            String discipline = "\'" + addDiscipline.getText() + "\'";
+            String group = "\'" + addGroup.getText() + "\'";
+            String teacher = "\'" + addTeacher.getText() + "\'";
+            String vid = "\'" + addVid.getText() + "\'";
+       /*     if(discipline.compareTo("''" ) == 0 || group.compareTo("''") == 0 || teacher.compareTo("''") == 0 || vid.compareTo("''") == 0){
+                errorWindow("Все поля должны быть заполнены!!!");
+                return;
+            }*/
+            ResultSet rs = Connection.stmt.executeQuery("select DISCIPLINA.PK_DISC from DISCIPLINA where DISCIPLINA.NAME = " + discipline);
+            rs.next();
+            idDiscipline  = rs.getInt(1);
+            rs.close();
+
+            rs = Connection.stmt.executeQuery("select PREPODAVATEL.PK_PREPOD from PREPODAVATEL where PREPODAVATEL.FIO = " + teacher);
+            rs.next();
+            idTeacher = rs.getInt(1);
+            rs.close();
+
+            rs = Connection.stmt.executeQuery("select GROUPPA.PK_GROUP from GROUPPA where GROUPPA.NAME = " + group );
+            rs.next();
+            idGroup = rs.getInt(1);
+            rs.close();
+
+            rs = Connection.stmt.executeQuery("select VID.PK_VID from VID where VID.VID = " + vid );
+            rs.next();
+            idVid = rs.getInt(1);
+            rs.close();
+
+
+            String para = "( \'" + idDiscipline + "\', \'" + idGroup + "\', \'" + idTeacher + "\',\'" + idVid + "\')";
+            rs = Connection.stmt.executeQuery("insert into PARA (DISCIPLINA_PK_DISC, GROUP_PK_GROUP, PREPODAVATEL_PK_PREPOD, VID_PK_VID) values " + para);
+            listOfClass.add(new Class(addDiscipline .getText(), addGroup.getText(), addTeacher.getText(), addVid.getText()));
+            rs.close();
+
+
+
+
+        }catch (Exception e){
+            FunctionsForForms.errorWindow("Значение поля не найдено");
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    private void deleteRow(){
+        int row = tableView.getSelectionModel().getSelectedIndex();
+        Class c = (Class)tableView.getSelectionModel().getSelectedItem();
+        listOfClass.remove(row);
+
+        ResultSet rs = null;
+        try {
+            rs = Connection.stmt.executeQuery("delete from PARA where PARA.PK_PARA = " + c.getIndex() );
+            rs.next();
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        tableView.getItems().remove(row);
+
+    }
 }

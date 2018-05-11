@@ -1,9 +1,11 @@
 package forms;
 
 import Service.Connection;
+import Service.FunctionsForForms;
 import Service.Request;
 import forms.handbooks.Both;
 import forms.handbooks.Class;
+import forms.handbooks.Student;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 
 
@@ -26,6 +29,8 @@ public class Specialnost {
     private TableColumn<Both, String> name;
     @FXML
     private TextField addSpecialnost;
+    @FXML
+    private TableColumn<Both, String> index;
 
     @FXML
     private  void initialize(){
@@ -60,5 +65,22 @@ public class Specialnost {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void delete(){
+        int row = tableView.getSelectionModel().getSelectedIndex();
+        Both b = (Both) tableView.getSelectionModel().getSelectedItem();
+        ResultSet rs = null;
+        try {
+            rs = Connection.stmt.executeQuery("delete from SPECIALNOST where SPECIALNOST.PK_CPEC = " + b.getIndex() );
+            rs.next();
+            rs.close();
+            tableView.getItems().remove(row);
+        } catch (SQLException e) {
+            FunctionsForForms.errorWindow("Эта запись используется");
+            e.printStackTrace();
+        }
+
     }
 }

@@ -14,22 +14,22 @@
       <Pane fx:id="editingPane" layoutX="14.0" layoutY="108.0" prefHeight="119.0" prefWidth="600.0" visible="false" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="20.0" layoutY="8.0" mnemonicParsing="false" onAction="#addTeacher" prefHeight="38.0" prefWidth="170.0" text="Добавить преподавателя" />
-            <TextField fx:id="add" layoutX="209.0" layoutY="14.0" prefHeight="25.0" prefWidth="320.0" />
+            <TextField fx:id="add" layoutX="209.0" layoutY="14.0" prefHeight="25.0" prefWidth="303.0" />
             <Button layoutX="25.0" layoutY="59.0" mnemonicParsing="false" onAction="#addDiscipline" prefHeight="38.0" prefWidth="163.0" text="Добавить дисциплину" />
-            <TextField fx:id="addDisc" layoutX="209.0" layoutY="59.0" prefHeight="25.0" prefWidth="356.0" />
+            <TextField fx:id="addDisc" layoutX="209.0" layoutY="59.0" prefHeight="25.0" prefWidth="303.0" />
+            <Button layoutX="520.0" layoutY="59.0" mnemonicParsing="false" onAction="#delete" text="Удалить" />
             <Button layoutX="530.0" layoutY="5.0" mnemonicParsing="false" onAction="#close" text="Закрыть" />
          </children>
       </Pane>
-      <Pane fx:id="pane" layoutY="41.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="pane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="find" layoutX="194.0" layoutY="57.0" prefHeight="14.0" prefWidth="319.0" />
-            <Button layoutX="14.0" layoutY="50.0" mnemonicParsing="false" onAction="#findTeacher" prefHeight="32.0" prefWidth="163.0" text="Найти преподавателя" />
-            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#showTeacher" prefHeight="32.0" prefWidth="121.0" text="Преподаватели" />
-            <Button layoutX="146.0" layoutY="9.0" mnemonicParsing="false" onAction="#showDiscipline" prefHeight="32.0" prefWidth="147.0" text="Показать дисциплины" />
-            <Button layoutX="488.0" layoutY="9.0" mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" />
+            <TextField fx:id="find" layoutX="187.0" layoutY="13.0" prefHeight="25.0" prefWidth="402.0" />
+            <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#findTeacher" prefHeight="32.0" prefWidth="163.0" text="Найти преподавателя" />
+            <Button layoutX="14.0" layoutY="54.0" mnemonicParsing="false" onAction="#showDiscipline" prefHeight="32.0" prefWidth="147.0" text="Полный список" />
+            <Button layoutX="488.0" layoutY="50.0" mnemonicParsing="false" onAction="#editing" prefHeight="32.0" prefWidth="98.0" text="Редактировать" />
          </children>
       </Pane>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <tabs>
           <Tab text="Преподаватели">
             <content>
@@ -37,6 +37,7 @@
                      <children>
                           <TableView fx:id="tableViewTeacher" editable="true" prefHeight="259.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                               <columns>
+                              <TableColumn fx:id="indexTeacher" prefWidth="75.0" text="ID" />
                                   <TableColumn fx:id="fio" prefWidth="599.0" text="ФИО" />
                                <!--   <TableColumn fx:id="discipline" prefWidth="298.0" text="Дисциплина" visible="false" /> -->
                               </columns>
@@ -55,6 +56,7 @@
                         </TableView>
                         <TableView fx:id="tableViewDiscipline" editable="true" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columns>
+                              <TableColumn fx:id="indexDiscipline" prefWidth="75.0" text="ID" />
                             <TableColumn fx:id="disc" prefWidth="599.0" text="Дисциплина" />
                           </columns>
                         </TableView>

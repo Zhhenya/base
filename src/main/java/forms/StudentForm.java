@@ -1,6 +1,7 @@
 package forms;
 
 import Service.Connection;
+import Service.FunctionsForForms;
 import Service.Request;
 import forms.handbooks.Class;
 import forms.handbooks.Student;
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Locale;
 
 public class StudentForm {
@@ -43,6 +45,8 @@ public class StudentForm {
     private Pane pane;
     @FXML
     private TextField findStudent;
+    @FXML
+    private TableColumn<Student, String> index;
 
 
 
@@ -51,6 +55,7 @@ public class StudentForm {
         initList();
 
         fio.setCellValueFactory(new PropertyValueFactory<>("FIO"));
+        index.setCellValueFactory(new PropertyValueFactory<>("index"));
      //   group.setCellValueFactory(new PropertyValueFactory<>("group"));
 
         tableViewStudent.setItems(listOfStudent);
@@ -71,7 +76,7 @@ public class StudentForm {
         try{
             ResultSet rs = Connection.stmt.executeQuery(Request.studentTable);
             while (rs.next()){
-                listOfStudent.add(new Student((rs.getString(1))));
+                listOfStudent.add(new Student(rs.getString(1), rs.getInt(3)));
             }
             rs.close();
         }catch (Exception e){
@@ -117,5 +122,22 @@ public class StudentForm {
         stage.show();
     }
 
+    @FXML
+    private void delete(){
+        int row = tableViewStudent.getSelectionModel().getSelectedIndex();
+        Student s = (Student) tableViewStudent.getSelectionModel().getSelectedItem();
+
+        ResultSet rs = null;
+        try {
+            rs = Connection.stmt.executeQuery("delete from STUDENT where STUDENT.PK_STUDENT = " + s.getIndex() );
+            rs.next();
+            rs.close();
+            tableViewStudent.getItems().remove(row);
+        } catch (SQLException e) {
+            FunctionsForForms.errorWindow("Эта запись используется");
+            e.printStackTrace();
+        }
+
+    }
 
 }

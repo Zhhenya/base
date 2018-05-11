@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.MainForm">
+<AnchorPane prefHeight="600.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="forms.MainForm">
    <children>
       <MenuBar prefHeight="40.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
         <menus>
@@ -37,16 +37,18 @@
       </MenuBar>
       <TableView fx:id="tableView" editable="true" prefHeight="200.0" prefWidth="464.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
         <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="discipline" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Дисциплина" />
           <TableColumn fx:id="group" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Группа" />
           <TableColumn fx:id="teacher" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Преподаватель" />
-            <TableColumn fx:id="vid" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Вид" />
+            <TableColumn fx:id="vid" maxWidth="300.0" minWidth="50.0" prefWidth="250.0" text="Тип занятия" />
         </columns>
       </TableView>
-      <Button layoutX="23.0" layoutY="48.0" mnemonicParsing="false" text="Добавить" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0" />
-      <TextField layoutX="88.0" layoutY="45.0" />
-      <TextField layoutX="246.0" layoutY="45.0" />
-      <TextField layoutX="405.0" layoutY="45.0" />
-      <TextField layoutX="563.0" layoutY="45.0" />
+      <Button layoutX="23.0" layoutY="48.0" mnemonicParsing="false" onAction="#addPara" text="Добавить" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="45.0" />
+      <TextField fx:id="addDiscipline" layoutX="88.0" layoutY="45.0" />
+      <TextField fx:id="addGroup" layoutX="246.0" layoutY="45.0" />
+      <TextField fx:id="addTeacher" layoutX="405.0" layoutY="45.0" />
+      <TextField fx:id="addVid" layoutX="563.0" layoutY="45.0" />
+      <Button layoutX="927.0" layoutY="45.0" mnemonicParsing="false" onAction="#deleteRow" text="Удалить запись" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="45.0" />
    </children>
 </AnchorPane>
